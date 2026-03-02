@@ -6,11 +6,17 @@ using ArrowClash.Common;
 public class PlayerCombatController : MonoBehaviour
 {
     public static PlayerCombatController instance;
-
+    public BattleEntity playerEntity;
 
     private void Awake()
     {
         instance = this;
+        if(playerEntity == null) playerEntity = GetComponent<BattleEntity>();
+    }
+
+    private void Start()
+    {
+        playerEntity.Initialize(playerEntity.statData);
     }
     public Direction GetDirectionInput()
     {

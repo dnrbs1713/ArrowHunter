@@ -13,6 +13,9 @@ public class PlayerAttackState : BattleState
 
     public override void Update()
     {
+
+        if (manager.isProcessing) return;
+
         ArrowClash.Common.Direction dir = PlayerCombatController.instance.GetDirectionInput();
         if (dir != ArrowClash.Common.Direction.None)
         {
