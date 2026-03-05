@@ -4,11 +4,16 @@ using UnityEngine;
 using ArrowClash.Common;
 public class PlayerAttackState : BattleState
 {
-    public PlayerAttackState(TurnManager manager) : base(manager){ }
+    private readonly PlayerCombatController _playerController;
+    public PlayerAttackState(TurnManager manager, PlayerCombatController player) : base(manager)
+    {
+        _playerController = player;
+    }
 
     public override void Enter()
     {
         Debug.Log("=== 플레이어 공격 턴 ===");
+        Debug.Log($"시직 코스트 {TurnManager.instance.currentCost}");
     }
 
     public override void Update()
@@ -16,7 +21,7 @@ public class PlayerAttackState : BattleState
 
         if (manager.isProcessing) return;
 
-        ArrowClash.Common.Direction dir = PlayerCombatController.instance.GetDirectionInput();
+        ArrowClash.Common.Direction dir = _playerController.GetDirectionInput();
         if (dir != ArrowClash.Common.Direction.None)
         {
             manager.ExecutePlayerAttack(dir);

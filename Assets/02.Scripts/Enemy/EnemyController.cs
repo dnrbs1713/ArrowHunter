@@ -5,13 +5,11 @@ using ArrowClash.Common;
 
 public class EnemyController : MonoBehaviour
 {
-    public static EnemyController instance;
 
     public BattleEntity enemyEntity;
 
     private void Awake()
     {
-        instance = this;
         if (enemyEntity == null)
         {
             enemyEntity = GetComponent<BattleEntity>();

@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class BattleResult
 {
     public bool success;
-    public BattleResult(bool success)
+    public BattleResult(bool getSuccess)
     {
-        this.success = success;
+        this.success = getSuccess;
     }
 }

@@ -17,14 +17,16 @@ public class BattleEntity : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHp -= amount;
-        if(currentHp <= 0)
+        currentHp = Mathf.Max( currentHp, 0 );
+        Debug.Log($"{statData.jobName} HP: {currentHp}");
+        if (currentHp <= 0)
         {
-            currentHp = 0;
             OnDie();
         }
     }
     public void OnDie()
     {
         Debug.Log($"{statData.jobName}이(가) 쓰러졌습니다.");
+        TurnManager.instance.OnEntityDied(this);
     }
 }

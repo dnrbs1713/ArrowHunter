@@ -15,3 +15,7 @@ MonoBehaviour:
   jobName: Warrior
   maxHp: 200
   attackDamage: 10
+  defensePower: 0
+  maxCost: 99
+  startCost: 10
+  baseCostRecovery: 5
