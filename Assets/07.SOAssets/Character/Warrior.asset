@@ -17,5 +17,5 @@ MonoBehaviour:
   attackDamage: 10
   defensePower: 0
   maxCost: 99
-  startCost: 10
-  baseCostRecovery: 5
+  startCost: 50
+  baseCostRecovery: 10

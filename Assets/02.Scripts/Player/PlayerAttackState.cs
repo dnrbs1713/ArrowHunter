@@ -24,7 +24,7 @@ public class PlayerAttackState : BattleState
         ArrowClash.Common.Direction dir = _playerController.GetDirectionInput();
         if (dir != ArrowClash.Common.Direction.None)
         {
-            manager.ExecutePlayerAttack(dir);
+            manager.OnDirectionInput(dir);
         }
     }
 }

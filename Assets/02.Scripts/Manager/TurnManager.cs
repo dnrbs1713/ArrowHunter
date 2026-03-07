@@ -1,9 +1,7 @@
-using UnityEngine;
-using System.Collections;
 using ArrowClash.Common;
-using NUnit.Framework;
-using Unity.VisualScripting;
-using NUnit.Framework.Constraints;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
@@ -16,21 +14,23 @@ public class TurnManager : MonoBehaviour
     [Header("Status")]
     public bool isProcessing = false; // 코루틴 중복 실행 및 입력 방지용 잠금 장치
     public bool isComboAttack = false;
+    public bool canUseSkill = false;
     public int turnCount = 1;
 
     [Header("Controllers")]
     public PlayerCombatController playerController;
     public EnemyController enemyController;
 
+    public int currentCost => _costHandler.currentCost;
+    public int maxCost => _costHandler.maxCost;
+
+    [Header("Skills")]
+    public List<SkillSO> skillList;
 
     private CostHandler _costHandler;
     private CombatProcessor _combatProcessor = new CombatProcessor();
     private BattleState _currentState;
-    public int currentCost => _costHandler.currentCost;
-    public int maxCost => _costHandler.maxCost;
-
-
-
+    private SkillExecutor _skillExecutor;
 
     private void Awake() => instance = this;
 
@@ -38,12 +38,21 @@ public class TurnManager : MonoBehaviour
     {
         // 게임 시작 시 플레이어 공격 상태로 진입  
         _costHandler = new CostHandler(player.statData.startCost, player.statData.maxCost);
+        _skillExecutor = new SkillExecutor(skillList);
         ChangeState(new PlayerAttackState(this, playerController));
     }
 
     private void Update()
     {
         _currentState?.Update();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!canUseSkill) return;
+            SkillSO skill = _skillExecutor.OnSpaceBar();
+            if (skill != null)
+                ExecuteSkill(skill);
+        }
 
         if(isComboAttack && !isProcessing && Input.GetKey(KeyCode.Z))
         {
@@ -59,6 +68,24 @@ public class TurnManager : MonoBehaviour
         Input.ResetInputAxes(); // 상태 전환 시 입력 버퍼 초기화 (이전 프레임의 입력 잔상 제거)
         _currentState = newState;
         _currentState?.Enter();
+    }
+
+    //********************** 스킬 로직 ************************//
+    public void OnDirectionInput(Direction dir)
+    {
+        _skillExecutor.OnDirectionInput(dir);
+        ExecutePlayerAttack(dir);
+    }
+    public void ExecuteSkill(SkillSO skill)
+    {
+        if (isProcessing) return;
+
+        if (!_costHandler.SpendCost(skill.cost))
+        {
+            Debug.Log($"<color=red>코스트 부족! 필요: {skill.cost} / 현재: {currentCost}</color>");
+            return;
+        }
+        Debug.Log($"<color=lime>[스킬 발동] {skill.skillName} / 코스트 {skill.cost} 소모</color>");
     }
 
     // ********************** 플레이어 공격 로직 **********************
@@ -119,6 +146,7 @@ public class TurnManager : MonoBehaviour
 
         if(result.success && _costHandler.CanSpend(5))
         {
+            canUseSkill = true;
             isComboAttack = true;
             Debug.Log("<color=lime> 콤보 가능!</color>");
             ChangeState(new PlayerAttackState(this,playerController));
@@ -173,10 +201,10 @@ public class TurnManager : MonoBehaviour
     //********************* 턴 종료 / 코스트 계산 *********************//
     public void FinishTurn()
     {
+        canUseSkill = false;
         isComboAttack = false;
         ChangeState(new EnemyTurnState(this,enemyController,playerController));
     }
-
 
     public void OnEntityDied(BattleEntity entity)
     {

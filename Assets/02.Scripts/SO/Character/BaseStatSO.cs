@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterDataSO", menuName = "Scriptable Objects/CharacterDataSO")]
@@ -15,5 +16,6 @@ public class BaseStatSO : ScriptableObject
     public int maxCost = 99;
     public int startCost;
     public int baseCostRecovery;
-    
+
+    //public List<SkillSO> skillList;
 }
