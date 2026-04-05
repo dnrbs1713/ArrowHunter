@@ -1,0 +1,1 @@
+﻿public enum RoomType { Start, Common, Elite, Event, Shop, Boss }
