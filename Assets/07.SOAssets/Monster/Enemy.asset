@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ac9c6c3b00e64da556f9a90287ca0, type: 3}
   m_Name: Enemy
   m_EditorClassIdentifier: 
-  jobName: Enemy
+  jobName: Monster
+  prefab: {fileID: 6602030343601409539, guid: b9c2780a5b200f841b60b012851434b8, type: 3}
   maxHp: 100
   attackDamage: 10
   defensePower: 0
   maxCost: 99
   startCost: 0
   baseCostRecovery: 0
+  skillList: []
