@@ -5,11 +5,12 @@ using System;
 
 public class MonsterEncounter : MonoBehaviour
 {
-    [Header("몬스터 데이터")]
+    [Header("Monster Data")]
     public BaseStatSO monsterStat;
     public bool isBoss = false;
 
     public event Action OnDefeated;
+    public static event Action<BaseStatSO, bool> OnEncountMonster;
 
     private bool _encountered = false;
 
@@ -19,20 +20,20 @@ public class MonsterEncounter : MonoBehaviour
         if (!other.CompareTag("PLAYER")) return;
 
         _encountered = true;
-
-        // BattleData에 적 정보 저장
         BattleData.playerMapPosition = other.transform.position;
-        BattleData.enemyStatData = monsterStat;
-        BattleData.isBossBattle = isBoss;
 
-        Debug.Log($"[MonsterEncounter] {monsterStat.jobName} 조우!");
+        Debug.Log($"Encounter stat = {monsterStat}, prefab = {monsterStat?.prefab}");
+        OnEncountMonster?.Invoke(monsterStat, isBoss);
+
+        Debug.Log($"[MonsterEncounter] Encountered {monsterStat.jobName}");
         GameSceneManager.instance.LoadBattle();
     }
+
     public void NotifyDefeated()
     {
         OnDefeated?.Invoke();
     }
-    // 에디터에서 감지 범위 시각화
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

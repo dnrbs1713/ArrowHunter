@@ -12,11 +12,6 @@ public class PlayerCombatController : MonoBehaviour
     {
         if(playerEntity == null) playerEntity = GetComponent<BattleEntity>();
     }
-
-    private void Start()
-    {
-        playerEntity.Initialize(playerEntity.statData);
-    }
     public Direction GetDirectionInput()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow)) return Direction.Up;

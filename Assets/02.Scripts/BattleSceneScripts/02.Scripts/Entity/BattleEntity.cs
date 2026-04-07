@@ -12,26 +12,35 @@ public class BattleEntity : MonoBehaviour
     {
         statusHandler = new StatusHandler(this);
     }
+
     public void Initialize(BaseStatSO data)
     {
         statData = data;
         currentHp = data.maxHp;
-        //gameObject.SetActive(true);
-        Debug.Log($"{data.jobName} 초기화 완료! HP: {currentHp}");
+        Debug.Log($"{data.jobName} initialized. HP: {currentHp}");
     }
+
+    public void InitializeFromInstance(PlayerInstance pi)
+    {
+        statData = BattleDataManager.instance.playerStatSO;
+        currentHp = pi.currentHp;
+        Debug.Log($"Player initialized. HP: {currentHp}");
+    }
+
     public void TakeDamage(int amount)
     {
         currentHp -= amount;
-        currentHp = Mathf.Max( currentHp, 0 );
+        currentHp = Mathf.Max(currentHp, 0);
         Debug.Log($"{statData.jobName} HP: {currentHp}");
         if (currentHp <= 0)
         {
             OnDie();
         }
     }
+
     public void OnDie()
     {
-        Debug.Log($"{statData.jobName}이(가) 쓰러졌습니다.");
+        Debug.Log($"{statData.jobName} died.");
         TurnManager.instance.OnEntityDied(this);
     }
 }

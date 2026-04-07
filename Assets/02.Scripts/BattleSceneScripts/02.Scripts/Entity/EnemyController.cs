@@ -16,10 +16,6 @@ public class EnemyController : MonoBehaviour
         }
 
     }
-    private void Start()
-    {
-        enemyEntity.Initialize(enemyEntity.statData);
-    }
     public Direction SelectRandomDirection()
     {
         return (Direction)Random.Range(1, 5);

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   jobName: Warrior
+  prefab: {fileID: 4245737170766824912, guid: 97f051ff97581624b8efef6c07f3c361, type: 3}
   maxHp: 200
   attackDamage: 10
   defensePower: 0

@@ -19,12 +19,13 @@ public class MapSceneInit : MonoBehaviour
 
     private void Start()
     {
-        //RoomManager.instance.ClearRoomObjects();
+        RoomManager.instance.ClearRoomObjects();
         InitRoom();
     }
 
     private void InitRoom()
     {
+        Debug.Log(RoomManager.instance._roomObjects.Count);
         // 1. 방 생성 or 재활성화
         GameObject roomObj = SpawnRoom();
         if(roomObj == null)
@@ -68,13 +69,14 @@ public class MapSceneInit : MonoBehaviour
         // 없으면 새로 생성
         // _nextRoomWorldPos가 있으면 포탈 기반
         // 없으면 좌표 기반 기본 위치
+        /*
         Vector3 worldPos = BattleData.isVictory
             ? BattleData.currentRoomWorldPos
             : RoomManager.instance.GetNextRoomWorldPos();
+        */
+        Vector3 worldPos = current.worldPos;
 
-        GameObject room = Instantiate(current.data.roomPrefab, worldPos, Quaternion.identity);
-
-        return room;
+        return Instantiate(current.data.roomPrefab, worldPos, Quaternion.identity);
     }
 
     private void SetPlayerPosition()

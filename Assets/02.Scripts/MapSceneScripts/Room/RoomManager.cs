@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using ArrowClash.Common;
 using System;
+using Unity.VisualScripting;
 
 
 public class RoomManager : MonoBehaviour
@@ -21,8 +22,8 @@ public class RoomManager : MonoBehaviour
     public Dictionary<Vector2Int, RoomInstance> _visitedRooms
         = new Dictionary<Vector2Int, RoomInstance>();
     
-    //
-    private Dictionary<Vector2Int, GameObject> _roomObjects
+    // 다시 private로 바꿀 것
+    public Dictionary<Vector2Int, GameObject> _roomObjects
         = new Dictionary<Vector2Int, GameObject>();
 
     private Vector2Int _currentPos = Vector2Int.zero;
@@ -42,9 +43,9 @@ public class RoomManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         _generator = new RoomGenerator(roomPools);
-        CurrentRoom = new RoomInstance(startRoomSO, _currentPos);
+        CurrentRoom = new RoomInstance(startRoomSO, _currentPos, _nextRoomWorldPos);
         _visitedRooms[_currentPos] = CurrentRoom;
-
+        
     }
 
 
@@ -104,27 +105,26 @@ public class RoomManager : MonoBehaviour
 
     public void MoveToRoom(Direction dir)
     {
-        Vector2Int nextPos = _currentPos + DirToVector(dir);
+        Vector2Int nextGridPos = _currentPos + DirToVector(dir);
 
-        if (!_visitedRooms.TryGetValue(nextPos, out RoomInstance nextRoom))
+        if (!_visitedRooms.TryGetValue(nextGridPos, out RoomInstance nextRoom))
         {
             RoomSO nextSO = _generator.GenerateRoom(dir);
-            nextRoom = new RoomInstance(nextSO, nextPos);
-            _visitedRooms[nextPos] = nextRoom;
+            float size = CurrentRoom.data.roomSize;
+
+            Vector3 nextWorldPos = CurrentRoom.worldPos + DirToVector3(dir) * size;
+
+            nextRoom = new RoomInstance(nextSO, nextGridPos, nextWorldPos);
+
+            _visitedRooms[nextGridPos] = nextRoom;
         }
         // 다음 방 위치 미리 계산 — MapSceneInit에서 사용
-        _nextRoomWorldPos = GetNextRoomPosition(_currentPos, nextPos, dir);
+        //_nextRoomWorldPos = GetNextRoomPosition(_currentPos, nextPos, dir);
 
-        _currentPos = nextPos;
+        _currentPos = nextGridPos;
         CurrentRoom = nextRoom;
 
         BattleData.enterDirection = dir;
-
-        if (nextRoom.data.monsters != null && nextRoom.data.monsters.Count > 0)
-        {
-            BattleData.enemyStatData = nextRoom.data.monsters[0].monsterStat;
-            BattleData.isBossBattle = nextRoom.data.isBoss;
-        }
 
         Debug.Log($"[RoomManager] 이동 → {dir} / 방: {CurrentRoom.RoomType} // {_visitedRooms.Count}");
         
@@ -146,7 +146,8 @@ public class RoomManager : MonoBehaviour
     public void ClearRoomObjects()
     {
         _roomObjects.Clear();
-        _nextRoomWorldPos = Vector3.zero;
+        _nextRoomWorldPos = CurrentRoom.worldPos;
+        Debug.Log($"확인 {_nextRoomWorldPos}");
     }
 
     //************ [private] ****************//

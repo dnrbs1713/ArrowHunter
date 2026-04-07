@@ -51,8 +51,13 @@ public class BattleUIManager : MonoBehaviour
 
     private void RefreshHpBars()
     {
+        if (TurnManager.instance == null) return;
+
         var player = TurnManager.instance.player;
         var enemy = TurnManager.instance.enemy;
+
+        if (player == null || enemy == null) return;
+        if (player.statData == null || enemy.statData == null) return;
 
         playerHpBar.fillAmount = (float)player.currentHp / player.statData.maxHp;
         enemyHpBar.fillAmount = (float)enemy.currentHp / enemy.statData.maxHp;
@@ -60,6 +65,9 @@ public class BattleUIManager : MonoBehaviour
 
     private void RefreshCost()
     {
+        if (costText == null) return;
+        if (TurnManager.instance == null) return;
+        if (TurnManager.instance.player == null || TurnManager.instance.enemy == null) return;
         costText.text = $"{ TurnManager.instance.currentCost} / { TurnManager.instance.maxCost}";
     }
 
