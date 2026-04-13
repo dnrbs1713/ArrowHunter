@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3534863121667904678}
-  - component: {fileID: 4016691886130472731}
   - component: {fileID: 7181919049003070560}
+  - component: {fileID: 1375408716382871070}
   m_Layer: 0
   m_Name: PortalLeft
   m_TagString: Untagged
@@ -34,21 +34,6 @@ Transform:
   - {fileID: 8724875525669565579}
   m_Father: {fileID: 2878287234456833412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4016691886130472731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414004192647439019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e28849b103b2c46adda6cce0be036e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: 3
-  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
-  openObject: {fileID: 5903025158214713761, guid: b7eca0ff59a61c848b0ee8559f7b1b96, type: 3}
 --- !u!65 &7181919049003070560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -70,6 +55,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1375408716382871070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414004192647439019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bf8248405d3f042962dbc6a20c877a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 3
+  closedObject: {fileID: 0}
+  openObject: {fileID: 3706957248912521452}
 --- !u!1 &2344443774408432233
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,8 +79,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1833264179644190519}
-  - component: {fileID: 457934815817733433}
   - component: {fileID: 1999577864479784180}
+  - component: {fileID: 2133387390795836713}
   m_Layer: 0
   m_Name: PortalUp
   m_TagString: Untagged
@@ -104,21 +104,6 @@ Transform:
   - {fileID: 1270167726466993690}
   m_Father: {fileID: 2878287234456833412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &457934815817733433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2344443774408432233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e28849b103b2c46adda6cce0be036e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: 1
-  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
-  openObject: {fileID: 5903025158214713761, guid: b7eca0ff59a61c848b0ee8559f7b1b96, type: 3}
 --- !u!65 &1999577864479784180
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -140,6 +125,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2133387390795836713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344443774408432233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bf8248405d3f042962dbc6a20c877a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 1
+  closedObject: {fileID: 0}
+  openObject: {fileID: 6612893094021874301}
 --- !u!1 &2787593477055980864
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7885146438111457654}
-  - component: {fileID: 4860910917362174520}
+  - component: {fileID: 9221869380665102936}
   m_Layer: 0
   m_Name: MonsterSpawner
   m_TagString: Untagged
@@ -172,7 +172,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2878287234456833412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4860910917362174520
+--- !u!114 &9221869380665102936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,13 +181,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2787593477055980864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd8706e102566514db5adff7e915237f, type: 3}
+  m_Script: {fileID: 11500000, guid: 59dc758418819fa46bc0a99b77f80233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPrefab: {fileID: 6602030343601409539, guid: b9c2780a5b200f841b60b012851434b8, type: 3}
+  defaultPrefab: {fileID: 0}
   spawnRangeX: 23
   spawnRangeZ: 23
-  spawnY: 1
+  spawnY: 0
   minSpawnDistance: 2
 --- !u!1 &8509435630733258015
 GameObject:
@@ -198,8 +198,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5669788049641569281}
-  - component: {fileID: 3479644948226190631}
   - component: {fileID: 2923305246829858969}
+  - component: {fileID: 8884990679960993214}
   m_Layer: 0
   m_Name: PortalRight
   m_TagString: Untagged
@@ -223,21 +223,6 @@ Transform:
   - {fileID: 546825088706701600}
   m_Father: {fileID: 2878287234456833412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3479644948226190631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8509435630733258015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e28849b103b2c46adda6cce0be036e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: 4
-  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
-  openObject: {fileID: 5903025158214713761, guid: b7eca0ff59a61c848b0ee8559f7b1b96, type: 3}
 --- !u!65 &2923305246829858969
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -259,6 +244,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8884990679960993214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509435630733258015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bf8248405d3f042962dbc6a20c877a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 4
+  closedObject: {fileID: 0}
+  openObject: {fileID: 5616986470953231687}
 --- !u!1 &8825112658284002107
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,8 +268,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6490702640228629903}
-  - component: {fileID: 5730403583893408410}
   - component: {fileID: 3312614383886243755}
+  - component: {fileID: 8162288743463388054}
   m_Layer: 0
   m_Name: PortalDown
   m_TagString: Untagged
@@ -293,21 +293,6 @@ Transform:
   - {fileID: 3276252684256296718}
   m_Father: {fileID: 2878287234456833412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5730403583893408410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8825112658284002107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e28849b103b2c46adda6cce0be036e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: 2
-  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
-  openObject: {fileID: 5903025158214713761, guid: b7eca0ff59a61c848b0ee8559f7b1b96, type: 3}
 --- !u!65 &3312614383886243755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -329,6 +314,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8162288743463388054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8825112658284002107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bf8248405d3f042962dbc6a20c877a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 2
+  closedObject: {fileID: 7427187435084313449}
+  openObject: {fileID: 0}
 --- !u!1 &8834520135836083043
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,17 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79d5c93c0c9f1a54d90f3e807ef6cab7, type: 3}
-  m_Name: Room1
+  m_Name: StartRoom(Stage 1)
   m_EditorClassIdentifier: 
-  roomType: 1
-  clearCondition: 0
-  roomSize: 3
+  roomType: 0
+  clearCondition: 3
+  roomSize: 0
   openUp: 1
   openDown: 1
   openLeft: 1
   openRight: 1
-  monsters:
-  - monsterStat: {fileID: 11400000, guid: 31923cff9a493ba43b1522bdb7cc8383, type: 2}
-    count: 1
+  monsters: []
   isBoss: 0
-  roomPrefab: {fileID: 4269160076194995877, guid: 2a83d01129331c14d9d8bebe3bb6be84, type: 3}
+  roomPrefab: {fileID: 8834520135836083043, guid: 7da6eb8a35b54384a83c8a09d412d51b, type: 3}

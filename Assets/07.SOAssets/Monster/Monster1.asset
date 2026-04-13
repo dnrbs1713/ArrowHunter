@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad04938132b5e3340961166c6491068f, type: 3}
-  m_Name: Warrior
+  m_Name: Monster1
   m_EditorClassIdentifier: 
-  jobName: Warrior
-  prefab: {fileID: 2055426548089699956, guid: 4dd11f1503222be49bfc5536d308c8fd, type: 3}
-  maxHp: 100
+  jobName: Monster1
+  prefab: {fileID: 5755114928988730018, guid: 41b6f5d1ba2150546ae2fb444bb8561f, type: 3}
+  maxHp: 50
   attackPower:
-    up: 7
-    down: 5
-    left: 5
-    right: 5
+    up: 3
+    down: 3
+    left: 3
+    right: 3
   defensePower: 0
   maxCost: 99
-  startCost: 99
-  baseCostRecovery: 99
+  startCost: 0
+  baseCostRecovery: 0
   statusPower: 1
   statusResistance: 0
   basicAttackMultiplier: 1

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1013213652020270099}
-  - component: {fileID: 1213508771938968254}
   - component: {fileID: 378864277244556}
+  - component: {fileID: 3179740247560244232}
   m_Layer: 0
   m_Name: PortalLeft
   m_TagString: Untagged
@@ -34,21 +34,6 @@ Transform:
   - {fileID: 6609512512254719907}
   m_Father: {fileID: 640416162574911763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1213508771938968254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 755206228541799933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e28849b103b2c46adda6cce0be036e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: 3
-  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
-  openObject: {fileID: 1287054734569831364}
 --- !u!65 &378864277244556
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -70,6 +55,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3179740247560244232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755206228541799933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bf8248405d3f042962dbc6a20c877a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 3
+  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
+  openObject: {fileID: 1287054734569831364}
 --- !u!1 &1856832906371851650
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3139681250875691963}
-  - component: {fileID: 8610273010824491737}
+  - component: {fileID: 4704203294874537172}
   m_Layer: 0
   m_Name: MonsterSpawner
   m_TagString: Untagged
@@ -102,7 +102,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 640416162574911763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8610273010824491737
+--- !u!114 &4704203294874537172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,13 +111,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1856832906371851650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd8706e102566514db5adff7e915237f, type: 3}
+  m_Script: {fileID: 11500000, guid: 59dc758418819fa46bc0a99b77f80233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPrefab: {fileID: 6602030343601409539, guid: b9c2780a5b200f841b60b012851434b8, type: 3}
+  defaultPrefab: {fileID: 5755114928988730018, guid: 41b6f5d1ba2150546ae2fb444bb8561f, type: 3}
   spawnRangeX: 13
   spawnRangeZ: 13
-  spawnY: 1
+  spawnY: 0
   minSpawnDistance: 2
 --- !u!1 &3999308694460121861
 GameObject:
@@ -128,8 +128,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8219371572380700590}
-  - component: {fileID: 1492456502029015487}
   - component: {fileID: 312431336632240894}
+  - component: {fileID: 1608667299101778751}
   m_Layer: 0
   m_Name: PortalUp
   m_TagString: Untagged
@@ -153,21 +153,6 @@ Transform:
   - {fileID: 3225061177297031492}
   m_Father: {fileID: 640416162574911763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1492456502029015487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3999308694460121861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e28849b103b2c46adda6cce0be036e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: 1
-  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
-  openObject: {fileID: 7396183717519334691}
 --- !u!65 &312431336632240894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -189,6 +174,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1608667299101778751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3999308694460121861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bf8248405d3f042962dbc6a20c877a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 1
+  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
+  openObject: {fileID: 7396183717519334691}
 --- !u!1 &4269160076194995877
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,8 +312,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7367854924163502958}
-  - component: {fileID: 8790878651460101775}
   - component: {fileID: 3059850912678583218}
+  - component: {fileID: 3873875228600222201}
   m_Layer: 0
   m_Name: PortalRight
   m_TagString: Untagged
@@ -337,21 +337,6 @@ Transform:
   - {fileID: 5360430955678267445}
   m_Father: {fileID: 640416162574911763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8790878651460101775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5043320874682660115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e28849b103b2c46adda6cce0be036e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: 4
-  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
-  openObject: {fileID: 332497573393490}
 --- !u!65 &3059850912678583218
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -373,6 +358,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3873875228600222201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5043320874682660115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bf8248405d3f042962dbc6a20c877a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 4
+  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
+  openObject: {fileID: 332497573393490}
 --- !u!1 &8699219657336670404
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,8 +382,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4252429715267075050}
-  - component: {fileID: 320164408001460343}
   - component: {fileID: 1644339271048012929}
+  - component: {fileID: 2850191520000099029}
   m_Layer: 0
   m_Name: PortalDown
   m_TagString: Untagged
@@ -407,21 +407,6 @@ Transform:
   - {fileID: 1540067173008560209}
   m_Father: {fileID: 640416162574911763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &320164408001460343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8699219657336670404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e28849b103b2c46adda6cce0be036e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: 2
-  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
-  openObject: {fileID: 6861892661685492790}
 --- !u!65 &1644339271048012929
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -443,6 +428,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2850191520000099029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8699219657336670404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9bf8248405d3f042962dbc6a20c877a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 2
+  closedObject: {fileID: 5004187808094887405, guid: e6455df2f4e62074da4535daa0dcccfc, type: 3}
+  openObject: {fileID: 6861892661685492790}
 --- !u!1001 &1067798542963875223
 PrefabInstance:
   m_ObjectHideFlags: 0
