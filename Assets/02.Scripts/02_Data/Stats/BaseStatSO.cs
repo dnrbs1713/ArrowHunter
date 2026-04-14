@@ -34,6 +34,9 @@ public class BaseStatSO : ScriptableObject
     public float damageTakenMultiplier = 1f;
     public float comboDamageMultiplier = 1.1f;
 
+    [Header("보상")]
+    public int expReward = 5;
+
     [Header("스킬")]
     public List<SkillSO> skillList;
 }

@@ -10,6 +10,9 @@ public class PlayerInstance
     private readonly List<StatModifier> _modifiers = new List<StatModifier>();
     public IReadOnlyList<StatModifier> Modifiers => _modifiers;
 
+    public int level { get; private set; } = 1;
+    public int currentExp { get; private set; } = 0;
+
     public PlayerInstance(BaseStatSO so)
     {
         baseStat = so;
@@ -193,5 +196,19 @@ public class PlayerInstance
     private void ClampCurrentHp()
     {
         currentHp = Mathf.Clamp(currentHp, 0, MaxHp);
+    }
+
+    public void AddExpRaw(int amount)
+    {
+        currentExp += Mathf.Max(0, amount);
+    }
+    public void SpendExp(int amount)
+    {
+        currentExp = Mathf.Max(0, currentExp - amount);
+    }
+
+    public void LevelUp()
+    {
+        level++;
     }
 }

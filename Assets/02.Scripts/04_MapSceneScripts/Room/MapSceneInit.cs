@@ -38,10 +38,11 @@ public class MapSceneInit : MonoBehaviour
         RoomManager.instance.RegisterRoomObject(roomObj);
 
         // 3. 전투 승리 후 복귀 시 문 열기
-        if (BattleData.isVictory)
+        if (BattleData.hasPendingBattleVictory)
         {
-            RoomManager.instance.OnRoomCleared();
-            BattleData.isVictory = false;  // 초기화 — 중복 호출 방지
+            RoomManager.instance.MarkCurrentRoomMonsterDefeated(BattleData.defeatedEnemyStat);
+            BattleData.isVictory = false;
+            BattleData.ClearPendingBattleVictory();
         }
 
         // 4. 플레이어 위치 설정

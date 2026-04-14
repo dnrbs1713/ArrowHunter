@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304299a912865b34c9a3e18da25c9c1d, type: 3}
+  m_Name: PlayerGrowthSO
+  m_EditorClassIdentifier: 
+  baseRequiredExp: 10
+  requiredExpInceresePerLevel: 5
+  levelUpModifiers:
+  - statType: 0
+    mode: 0
+    value: 5
+    duration: 0
+    sourceId: 
+  - statType: 1
+    mode: 0
+    value: 2
+    duration: 0
+    sourceId: 
+  - statType: 2
+    mode: 0
+    value: 2
+    duration: 0
+    sourceId: 
+  - statType: 3
+    mode: 0
+    value: 2
+    duration: 0
+    sourceId: 
+  - statType: 4
+    mode: 0
+    value: 2
+    duration: 0
+    sourceId: 

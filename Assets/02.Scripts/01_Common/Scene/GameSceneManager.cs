@@ -25,30 +25,30 @@ public class GameSceneManager : MonoBehaviour
 
     private void OnEnable()
     {
-        TurnManager.OnVictory += HandleVictory;
         TurnManager.OnDefeat += HandleDefeat;
     }
 
     private void OnDisable()
     {
-        TurnManager.OnVictory -= HandleVictory;
         TurnManager.OnDefeat -= HandleDefeat;
     }
 
     private void HandleVictory(int turnCount) => StartCoroutine(WaitAndLoad(SceneName.Map));
     private void HandleDefeat() => StartCoroutine(WaitAndLoad(SceneName.Result));
-
     private IEnumerator WaitAndLoad(string sceneName)
     {
-        // 최소 0.5초 대기 후 입력 받음
         yield return new WaitForSecondsRealtime(0.5f);
 
+        while (Input.anyKey)
+            yield return null;
+
         while (!Input.anyKeyDown)
-            yield return new WaitForSecondsRealtime(0.05f);
+            yield return null;
 
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
     }
+
 
     private IEnumerator LoadImmediate(string sceneName)
     {

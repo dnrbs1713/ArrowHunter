@@ -15,40 +15,32 @@ public class MonsterSpawner : MonoBehaviour
     [Header("몬스터 간 최소 거리")]
     public float minSpawnDistance = 2f;
 
-    private int _aliveCount = 0;
     private List<Vector3> _usedPositions = new List<Vector3>();
 
     public void SpawnMonsters(RoomInstance room)
     {
-        if(room.data.clearCondition != ClearCondition.KillAllMonsters)
-        {
-            if (room.data.clearCondition == ClearCondition.None)
-                RoomManager.instance.OnRoomCleared();
-            return;
-        }
+        if (room.isCleared) return;
 
-        if(room.data.monsters == null || room.data.monsters.Count == 0)
+        if (room.data.clearCondition == ClearCondition.None)
         {
             RoomManager.instance.OnRoomCleared();
             return;
         }
 
-        if (room.isCleared) return;
+        room.InitializeMonsters();
 
-        _aliveCount = 0;
+        if (room.RemainingMonsters.Count == 0)
+        {
+            RoomManager.instance.OnRoomCleared();
+            return;
+        }
+
         _usedPositions.Clear();
 
-        foreach(var spawnData in room.data.monsters)
-        {
-            if (spawnData.monsterStat == null) continue;
+        foreach (var monsterStat in room.RemainingMonsters)
+            SpawnMonster(monsterStat, room.data.isBoss);
 
-            for(int i = 0; i < spawnData.count; i++)
-            {
-                SpawnMonster(spawnData.monsterStat, room.data.isBoss);
-                _aliveCount++;
-            }
-        }
-        Debug.Log($"[MonsterSpawner] {_aliveCount}마리 스폰 완료");
+        Debug.Log($"[MonsterSpawner] {room.RemainingMonsters.Count}마리 스폰 완료");
     }
 
     private void SpawnMonster(BaseStatSO stat, bool isBoss)
@@ -57,7 +49,6 @@ public class MonsterSpawner : MonoBehaviour
         if(prefab == null)
         {
             Debug.LogWarning($"[MonsterSpawner] {stat.jobName} 프리팹 없음");
-            _aliveCount = Mathf.Max(0, _aliveCount - 1);  // 스폰 실패 시 카운트 보정
             return;
         }
 
@@ -69,22 +60,9 @@ public class MonsterSpawner : MonoBehaviour
         {
             encounter.monsterStat = stat;
             encounter.isBoss = isBoss;
-            encounter.OnDefeated += OnMonsterDefeated;
         }
     }
 
-    private void OnMonsterDefeated()
-    {
-        _aliveCount--;
-        Debug.Log($"[MonsterSpawner] 남은 몬스터: {_aliveCount}");
-
-        if(_aliveCount <= 0)
-        {
-            Debug.Log("[MonsterSpawner] 모든 몬스터 처치!");
-            // 포탈 생성은 RoomManager에서 처리
-            RoomManager.instance.OnRoomCleared();
-        }
-    }
     private Vector3 GetRandomSpawnPosition()
     {
         int maxAttempts = 30;

@@ -36,6 +36,7 @@ public class RoomManager : MonoBehaviour
 
     private Vector3 _nextRoomWorldPos = Vector3.zero;
 
+    public static event Action<RoomInstance> OnRoomClearedEvent;
     private void Awake()
     {
         if (instance != null) { Destroy(gameObject); return; }
@@ -89,8 +90,21 @@ public class RoomManager : MonoBehaviour
         _generator.UpdateDifficulty(ClearCount);
 
         SetupPortals(CurrentRoom);
+
+        OnRoomClearedEvent?.Invoke(CurrentRoom);
     }
 
+    public void MarkCurrentRoomMonsterDefeated(BaseStatSO defeatedStat)
+    {
+        if (CurrentRoom == null) return;
+        if (CurrentRoom.isCleared) return;
+
+        CurrentRoom.InitializeMonsters();
+        CurrentRoom.MarkMonsterDefeated(defeatedStat);
+
+        if (CurrentRoom.IsClearConditionMet())
+            OnRoomCleared();
+    }
     public PortalController GetPortal(Direction dir)
     {
         return dir switch

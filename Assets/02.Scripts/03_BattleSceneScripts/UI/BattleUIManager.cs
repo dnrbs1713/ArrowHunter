@@ -34,12 +34,10 @@ public class BattleUIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        TurnManager.OnVictory += ShowVictory;
         TurnManager.OnDefeat += ShowDefeat;
     }
     private void OnDisable()
     {
-        TurnManager.OnVictory -= ShowVictory;
         TurnManager.OnDefeat -= ShowDefeat;
     }
 
@@ -71,14 +69,19 @@ public class BattleUIManager : MonoBehaviour
         costText.text = $"{ TurnManager.instance.currentCost} / { TurnManager.instance.maxCost}";
     }
 
-    public void ShowVictory(int turnCount)
+    public void ShowVictory(int turnCount, ProgressionResult progression)
     {
         victoryPanel.SetActive(true);
-        victoryTurnText.text = $"클리어 턴: {turnCount}";
-        victoryPromptText.text = "아무 버튼을 눌러 계속";
 
-        BattleData.isVictory = true;
-        BattleData.turnCount = turnCount;
+        victoryTurnText.text =
+            $"클리어 턴: {turnCount}\n" +
+            $"획득 EXP: {progression.gainedExp}\n" +
+            $"Level: {progression.levelBefore} -> {progression.levelAfter}";
+
+        if (progression.levelUpCount > 0)
+            victoryPromptText.text = $"레벨업 {progression.levelUpCount}회!\n아무 버튼을 눌러 계속";
+        else
+            victoryPromptText.text = "아무 버튼을 눌러 계속";
 
         Time.timeScale = 0f;
     }
