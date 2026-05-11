@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ee08ca52b98dd4f92dec4467813c0d, type: 3}
+  m_Name: "\uC815\uC790\uC138"
+  m_EditorClassIdentifier: 
+  artifactName: "\uC815\uC790\uC138"
+  Rariry: Common
+  iconl: {fileID: 0}
+  description: "\uD604\uC7AC \uD134\uC5D0 \uACF5\uACA9\uC744 \uD558\uC9C0 \uC54A\uACE0
+    \uB118\uC5B4\uAC00\uBA74 \uB2E4\uC74C \uD134 \uB370\uBBF8\uC9C0\uAC00 10% \uC99D\uAC00\uD55C\uB2E4.
+    (\uCD5C\uB300 40%)"
+  artifactId: 1
+  artifactEffect:
+  - {fileID: 11400000, guid: 819a3bb229cb52c4280a1c88b98b5c1c, type: 2}

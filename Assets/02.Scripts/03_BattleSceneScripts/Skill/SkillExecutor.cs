@@ -3,17 +3,17 @@ using ArrowClash.Common;
 using System.Collections.Generic;
 public class SkillExecutor
 {
-    private List<SkillSO> _skills;
+    private List<PlayerSkillInstance> _skills;
     private InputBuffer _buffer;
     public bool isInputtung => _buffer.isInputting;
 
-    public SkillExecutor(List<SkillSO> skills)
+    public SkillExecutor(List<PlayerSkillInstance> skills)
     {
         _buffer = new InputBuffer();
-        _skills = skills;
+        _skills = skills ?? new List<PlayerSkillInstance>();
     }
 
-    public SkillSO OnSpaceBar()
+    public PlayerSkillInstance OnSpaceBar()
     {
         if (!_buffer.isInputting)
         {
@@ -24,11 +24,11 @@ public class SkillExecutor
         else
         {
             Debug.Log($"<color=yellow>버퍼 내용: {_buffer.GetBufferString()} / 개수: {_buffer.GetBuffer().Count}</color>");
-            SkillSO matched = CheckSkill();
+            PlayerSkillInstance matched = CheckSkill();
             _buffer.CancelInput();
 
             if (matched != null)
-                Debug.Log($"<color=lime>[스킬 발동] {matched.skillName}</color>");
+                Debug.Log($"<color=lime>[스킬 발동] {matched.Skill.skillName}</color>");
             else
                 Debug.Log("<color=orange>[스킬 없음] 매칭되는 스킬이 없습니다.</color>");
 
@@ -40,13 +40,19 @@ public class SkillExecutor
         _buffer.Add(dir);
         Debug.Log($"<color=cyan>[버퍼] {_buffer.GetBufferString()}</color>");
     }
-    private SkillSO CheckSkill()
+    private PlayerSkillInstance CheckSkill()
     {
-        for(int i = 0; i < _skills.Count; i++)
+        for (int i = 0; i < _skills.Count; i++)
         {
-            if (_buffer.Matches(_skills[i].inputCombo))
+            SkillSO skill = _skills[i].Skill;
+
+            if (skill == null)
+                continue;
+
+            if (_buffer.Matches(skill.inputCombo))
                 return _skills[i];
         }
+
         return null;
     }
 

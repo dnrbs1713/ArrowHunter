@@ -1,0 +1,32 @@
+﻿id,assetName,statType,mode,value,duration,sourceMemo,notes
+effect_attack_up_5,S_AttackDamage_UP_5,AttackUp,Flat,5,-1,위 방향 공격력 증가,
+effect_attack_up_3,S_AttackDamage_UP_3,AttackUp,Flat,3,-1,위 방향 공격력 증가,duration -1은 영구 효과
+effect_attack_right_5,S_AttackDamage_RIGHT_5,AttackRight,Flat,5,-1,오른쪽 방향 공격력 증가,
+effect_attack_right_3,S_AttackDamage_RIGHT_3,AttackRight,Flat,3,-1,오른쪽 방향 공격력 증가,새 효과는 이 아래에 추가
+effect_attack_left_5,S_AttackDamage_LEFT_5,AttackLeft,Flat,5,-1,왼쪽 방향 공격력 증가,
+effect_attack_left_3,S_AttackDamage_LEFT_3,AttackLeft,Flat,3,-1,왼쪽 방향 공격력 증가,
+effect_attack_down_5,S_AttackDamage_DOWN_5,AttackDown,Flat,5,-1,아래 방향 공격력 증가,
+effect_attack_down_3,S_AttackDamage_DOWN_3,AttackDown,Flat,3,-1,아래 방향 공격력 증가,duration -1은 영구 효과
+effect_attack_all_2,S_AttackDamage_ALL_2,AttackAllFlat,Flat,5,-1,모든 방향 공격력 증가,
+effect_combo_damage_5_per,S_ComboDamage_5_per,ComboDamageMultiplier,Percent,5,-1,콤보 데미지 증가,
+effect_attack_down_15_per,S_AttackDamage_DOWN_15_per,AttackDown,Percent,15,-1,아래 방향 공격력 증가,
+effect_attack_left_15_per,S_AttackDamage_LEFT_15_per,AttackLeft,Percent,15,-1,왼쪽 방향 공격력 증가,
+effect_attack_up_15_per,S_AttackDamage_UP_15_per,AttackUp,Percent,15,-1,위 방향 공격력 증가,
+effect_attack_right_15_per,S_AttackDamage_RIGHT_15_per,AttackRight,Percent,15,-1,오른쪽 방향 공격력 증가,
+effect_attack_all_3,S_AttackDamage_ALL_3,AttackAllFlat,Flat,3,-1,모든 방향 공격력 증가,
+effect_combo_damage_10_per,S_ComboDamage_10_per,ComboDamageMultiplier,Percent,15,-1,콤보 데미지 증가,
+effect_combo_damage_20_per,S_ComboDamage_20_per,ComboDamageMultiplier,Percent,20,-1,콤보 데미지 증가,
+effect_attack_all_10_per,S_AttackDamage_ALL_10_per,AttackAllPercent,Percent,10,-1,모든 방향 공격력 증가,
+effect_status_power_20_per,S_StatusPower_20_per,StatusPower,Percent,20,-1,상태이상 위력 증가,
+effect_skill_power_15_per,S_SkillPower_15_per,SkillPowerMultiplier,Percent,15,-1,스킬 위력 증가,
+effect_skill_power_25_per,S_SkillPower_25_per,SkillPowerMultiplier,Percent,25,-1,스킬 위력 증가,
+effect_hp_5,S_HP_5,MaxHp,Flat,5,-1,최대 HP 증가,기존 SO value 5 기준
+effect_defense_power_5,S_DefensePower_5,DefensePower,Flat,5,-1,방어력 증가,
+effect_defense_power_8,S_DefensePower_8,DefensePower,Flat,8,-1, 방어력 증가,
+effect_hp_10,S_HP_10,MaxHp,Flat,10,-1,최대 HP 증가,
+effect_defense_power_15_and_hp_10,S_DefensePower_15_HP_10,DefensePower,Flat,15,-1,방어력 증가 + HP증가,
+effect_defense_power_15_and_hp_10,S_DefensePower_15_HP_10,MaxHp,Flat,10,-1,방어력 증가 + HP증가,
+effect_cost_recovery_1,S_CostRecovery_1,CostRecovery,Flat,1,-1,코스트 회복 증가,
+effect_start_cost_1,S_StartCost_1,StartCost,Flat,1,-1,시작 코스트 증가,
+effect_max_cost_5,S_MaxCost_5,MaxCost,Flat,5,-1,최대 코스트 증가,
+effect_start_cost_5,S_StartCost_5,StartCost,Flat,5,-1,시작 코스트 증가,

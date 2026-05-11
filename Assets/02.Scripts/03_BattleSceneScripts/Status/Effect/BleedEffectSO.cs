@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections; 
 using System.Collections.Generic;
 
+[CreateAssetMenu(fileName = "BleedEffectSO", menuName = "Scriptable Objects/BleedEffectSO")]
 public class BleedEffectSO : StatusEffectSO
 {
     [Header("ÃâÇ÷ ¼öÄ¡")]

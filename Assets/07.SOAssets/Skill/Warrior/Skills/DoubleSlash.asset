@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788f1a5e0a38d894b89657ac6f9da3f1, type: 3}
+  m_Name: DoubleSlash
+  m_EditorClassIdentifier: 
+  skillId: 
+  skillName: 
+  icon: {fileID: 0}
+  description: 
+  inputCombo: 0100000004000000
+  maxLevel: 3
+  levelData:
+  - level: 3
+    cost: 4
+    description: "\uAC19\uC740 \uACF3\uC744 \uBE60\uB974\uAC8C \uB450 \uBC88 \uACF5\uACA9\uD55C\uB2E4.
+      \uCD9C\uD608\uC744 \uC77C\uC73C\uD0A8\uB2E4."
+    effects:
+    - {fileID: 11400000, guid: 3678c49e95f1e5744af6bc0bf022719b, type: 2}
+  - level: 3
+    cost: 4
+    description: "\uAC19\uC740 \uACF3\uC744 \uBE60\uB974\uAC8C \uB450 \uBC88 \uACF5\uACA9\uD55C\uB2E4.
+      \uCD9C\uD608\uC744 \uC77C\uC73C\uD0A8\uB2E4."
+    effects:
+    - {fileID: 11400000, guid: fcf72dd24a8efc74eb980afa2149ff9e, type: 2}
+  - level: 3
+    cost: 5
+    description: "\uAC19\uC740 \uACF3\uC744 \uBE60\uB974\uAC8C \uB450 \uBC88 \uACF5\uACA9\uD55C\uB2E4.
+      \uCD9C\uD608\uC744 \uC77C\uC73C\uD0A8\uB2E4."
+    effects:
+    - {fileID: 11400000, guid: 746e6504009c29d48a15e5bee852e3e0, type: 2}

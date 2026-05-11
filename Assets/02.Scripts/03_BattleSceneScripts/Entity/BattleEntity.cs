@@ -99,6 +99,25 @@ public class BattleEntity : MonoBehaviour
         if (currentHp <= 0)
             OnDie();
     }
+    public int GetMaxCost()
+    {
+        return IsPlayerEntity ? _playerInstance.MaxCost : statData.maxCost;
+    }
+
+    public int GetStartCost()
+    {
+        return IsPlayerEntity ? _playerInstance.StartCost : statData.startCost;
+    }
+
+    public int GetCostRecovery()
+    {
+        return IsPlayerEntity ? _playerInstance.CostRecovery : statData.baseCostRecovery;
+    }
+
+    public int GetDefenseSuccessCostBonus()
+    {
+        return IsPlayerEntity ? _playerInstance.DefenseSuccessCostBonus : statData.defenseSuccessCostBonus;
+    }
 
     public void OnDie()
     {

@@ -39,6 +39,9 @@ public class PlayerProgressionService : MonoBehaviour
             player.SpendExp(requiredExp);
             player.LevelUp();
 
+            player.AddSkillPoint(1);
+            player.UnlockSkillsByCurrentLevel();
+
             foreach (var modifier in growthSO.CreateLevelUpModifiers(player.level))
                 player.AddModifier(modifier);
 

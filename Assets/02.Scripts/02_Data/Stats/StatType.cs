@@ -7,11 +7,15 @@ public enum StatType
     AttackLeft,
     AttackRight,
 
+    AttackAllFlat,
+    AttackAllPercent,
+
     DefensePower,
 
     MaxCost,
     StartCost,
     CostRecovery,
+    DefenseSuccessCostBonus,
 
     StatusPower,
     StatusResistance,

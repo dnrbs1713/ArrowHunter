@@ -52,6 +52,8 @@ public class MapSceneInit : MonoBehaviour
         MonsterSpawner spawner = roomObj.GetComponentInChildren<MonsterSpawner>();
         if (spawner != null)
             spawner.SpawnMonsters(RoomManager.instance.CurrentRoom);
+
+        LockPlayerMovementAfterRoomInit();
     }
 
     private GameObject SpawnRoom()
@@ -82,22 +84,22 @@ public class MapSceneInit : MonoBehaviour
 
     private void SetPlayerPosition()
     {
-        var player = GameObject.FindWithTag("PLAYER");
+        MapPlayerController player = GetMapPlayer();
         if (player == null) return;
+
+        Transform playerTransform = player.transform;
 
         Direction enterDir = BattleData.enterDirection;
 
-        // 첫 입장
-        if(enterDir == Direction.None)
+        if (enterDir == Direction.None)
         {
-            player.transform.position = new Vector3(0f, 1f, 0f);
+            playerTransform.position = new Vector3(0f, 1f, 0f);
             return;
         }
 
-        // 전투 후 복귀
-        if(BattleData.playerMapPosition != Vector3.zero)
+        if (BattleData.playerMapPosition != Vector3.zero)
         {
-            player.transform.position = BattleData.playerMapPosition;
+            playerTransform.position = BattleData.playerMapPosition;
             BattleData.playerMapPosition = Vector3.zero;
             return;
         }
@@ -106,8 +108,25 @@ public class MapSceneInit : MonoBehaviour
         PortalController spawnPortal = RoomManager.instance.GetPortal(spawnDir);
 
         if (spawnPortal != null)
-            player.transform.position = spawnPortal.transform.position + Vector3.up;
+            playerTransform.position = spawnPortal.transform.position + Vector3.up;
         else
-            player.transform.position = new Vector3(0f, 1f, 0f);
+            playerTransform.position = new Vector3(0f, 1f, 0f);
     }
+
+
+    private void LockPlayerMovementAfterRoomInit()
+    {
+        GameObject player = GameObject.FindWithTag("PLAYER");
+        if (player == null) return;
+
+        MapPlayerController controller = player.GetComponent<MapPlayerController>();
+        if (controller != null)
+            controller.LockMovement(1f);
+    }
+
+    private MapPlayerController GetMapPlayer()
+    {
+        return FindFirstObjectByType<MapPlayerController>();
+    }
+
 }

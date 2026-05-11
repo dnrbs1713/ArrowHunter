@@ -33,13 +33,18 @@ public class PlayerAttackState : BattleState
             return;
         }
 
-        if (manager.isComboAttack && Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            manager.GiveUpCombo();
+            if (manager.isComboAttack)
+                manager.GiveUpCombo();
+            else
+                manager.FinishTurn();
+
             return;
         }
 
         ArrowClash.Common.Direction dir = _playerController.GetDirectionInput();
+
         if (dir != ArrowClash.Common.Direction.None)
             manager.HandlePlayerDirectionInput(dir);
     }

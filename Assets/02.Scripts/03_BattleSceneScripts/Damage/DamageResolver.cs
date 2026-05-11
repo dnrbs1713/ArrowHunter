@@ -3,6 +3,7 @@ using ArrowClash.Common;
 
 public static class DamageResolver
 {
+    private const float DefenseScaling = 100f;
     public static int Resolve(DamageContext context)
     {
         context.phase = DamagePhase.BeforeDefense;
@@ -17,8 +18,8 @@ public static class DamageResolver
             context.phase = DamagePhase.Defense;
             context.target.statusHandler.ModifyDamage(context);
 
-            context.defensePower = Mathf.Clamp01(context.defensePower);
-            context.damage *= 1f - context.defensePower;
+            float reduction = GetDefenseReduction(context.defensePower);
+            context.damage *= 1f - reduction;
         }
 
         context.phase = DamagePhase.AfterDefense;
@@ -39,6 +40,13 @@ public static class DamageResolver
         int finalDamage = Resolve(context);
         context.target.TakeDamage(finalDamage);
         return finalDamage;
+    }
+
+    // 방어력 수치 -> 피해 감소율
+    private static float GetDefenseReduction(float defensePower)
+    {
+        defensePower = Mathf.Max(0f, defensePower);
+        return defensePower / (defensePower + DefenseScaling);
     }
 
     public static DamageContext CreateBasicAttack(
@@ -64,6 +72,31 @@ public static class DamageResolver
             useOutgoingModifiers = true,
             useIncomingModifiers = true,
             useDamageTakenMultiplier = true
+        };
+    }
+
+    public static DamageContext CreateSkillDamage(
+        BattleEntity source,
+        BattleEntity target,
+        float damageMultiplier,
+        bool useDefnese = true,
+        bool useOutgoingModifiers = true,
+        bool useIncomingModifiers = true,
+        bool useDamageTakenMultiplier = true)
+    {
+        float damage = source.GetSkillPower() * damageMultiplier;
+
+        return new DamageContext
+        {
+            source = source,
+            target = target,
+            damageType = DamageType.Skill,
+            damage = damage,
+
+            useDefense = useDefnese,
+            useOutgoingModifiers = useOutgoingModifiers,
+            useIncomingModifiers = useIncomingModifiers,
+            useDamageTakenMultiplier = useDamageTakenMultiplier
         };
     }
 

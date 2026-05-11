@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad04938132b5e3340961166c6491068f, type: 3}
+  m_Name: Warrior
+  m_EditorClassIdentifier: 
+  jobName: Warrior
+  mapPrefab: {fileID: 2055426548089699956, guid: 4dd11f1503222be49bfc5536d308c8fd, type: 3}
+  battlePrefab: {fileID: 2055426548089699956, guid: 816370b26c852ef45a724a6e3498ceb6, type: 3}
+  prefab: {fileID: 2055426548089699956, guid: 4dd11f1503222be49bfc5536d308c8fd, type: 3}
+  maxHp: 100
+  attackPower:
+    up: 7
+    down: 5
+    left: 5
+    right: 5
+  defensePower: 0.05
+  maxCost: 99
+  startCost: 5
+  baseCostRecovery: 5
+  defenseSuccessCostBonus: 2
+  statusPower: 1
+  statusResistance: 0
+  basicAttackMultiplier: 1
+  skillPowerMultiplier: 1
+  damageTakenMultiplier: 1
+  comboDamageMultiplier: 1.1
+  expReward: 5
+  skillTree: {fileID: 11400000, guid: 7b2787f6b117a4e48815bed9493581b0, type: 2}

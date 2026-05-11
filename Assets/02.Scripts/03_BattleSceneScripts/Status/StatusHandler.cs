@@ -136,7 +136,7 @@ public class StatusHandler
         foreach (var effect in _activeEffects)
             result = effect.data.ModifyDefensePower(_owner, effect, result);
 
-        return Mathf.Clamp01(result);
+        return Mathf.Max(0f, result);
     }
     public DirectionInputResult ModifyDirectionInput(ArrowClash.Common.Direction rawDir)
     {

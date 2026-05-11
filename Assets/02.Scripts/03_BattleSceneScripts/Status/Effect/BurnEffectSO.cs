@@ -8,7 +8,7 @@ public class BurnEffectSO : StatusEffectSO
 
     [Header("방어력 감소율")]
     [Range(0f, 1f)]
-    public float defenseReductionRatio = 0.3f;
+    public float defenseReductionRatio = 0.2f;
     public override void OnApply(BattleEntity owner, BattleEntity attacker, StatusEffectInstance instance)
     {
         instance.magnitude = attacker.GetStatusPowerValue() * damageMultiplier;

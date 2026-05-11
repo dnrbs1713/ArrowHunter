@@ -6,6 +6,7 @@ public class CostHandler
     public int maxCost { get; private set; }
     public bool pendingDefenseBonus { get; set; } = false;
 
+    private int DefenseSuccessBonus = 2;
     public CostHandler(int startCost, int max)
     {
         currentCost = startCost;
@@ -32,13 +33,15 @@ public class CostHandler
         Debug.Log($"코스트 +{currentCost - before} 회복. 현재: {currentCost}");
     }
 
-    public void RecoverOnTurnEnd(int baseCostRecovery, int turnCount)
+    public void RecoverOnTurnEnd(int baseCostRecovery, int defenseSuccessBonus)
     {
-        int defenseBonus = pendingDefenseBonus ? 5 : 0;
-        int recovery = baseCostRecovery + (turnCount * 1) + defenseBonus;
+        int defenseBonus = pendingDefenseBonus ? defenseSuccessBonus : 0;
+        int recovery = baseCostRecovery + defenseBonus;
+
         pendingDefenseBonus = false;
         RecoverCost(recovery);
     }
+
 }
 
 // 코스트 보너스

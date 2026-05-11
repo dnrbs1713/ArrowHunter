@@ -73,9 +73,13 @@ public class TurnManager : MonoBehaviour
         if (_battleStarted) return;
         if (!_runtime.IsReady) return;
 
-        List<SkillSO> runtimeSkills = player.statData.skillList;
-        if ((runtimeSkills == null || runtimeSkills.Count == 0) && skillList != null && skillList.Count > 0)
-            runtimeSkills = skillList;
+        List<PlayerSkillInstance> runtimeSkills = new List<PlayerSkillInstance>();
+
+        if (BattleDataManager.instance != null && BattleDataManager.instance.PlayerInstance != null)
+        {
+            BattleDataManager.instance.PlayerInstance.UnlockSkillsByCurrentLevel();
+            runtimeSkills = BattleDataManager.instance.PlayerInstance.GetUnlockedSkills();
+        }
 
         _actions.Initialize(_runtime, runtimeSkills);
         _battleStarted = true;

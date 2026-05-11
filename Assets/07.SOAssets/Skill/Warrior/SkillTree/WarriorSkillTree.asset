@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728bfd61e9b7dfd4084227e80a6c9067, type: 3}
+  m_Name: WarriorSkillTree
+  m_EditorClassIdentifier: 
+  unlocks:
+  - unlockLevel: 1
+    skill: {fileID: 11400000, guid: 17e952452bb9762468a06873e0b01736, type: 2}
+  - unlockLevel: 5
+    skill: {fileID: 11400000, guid: 3620ffefb841daf449516c822c4570e3, type: 2}

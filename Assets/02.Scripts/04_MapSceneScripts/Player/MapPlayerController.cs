@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using System.Collections; 
+using System.Collections.Generic;
 public class MapPlayerController : MonoBehaviour
 {
     [Header("이동")]
@@ -8,19 +9,44 @@ public class MapPlayerController : MonoBehaviour
     private Rigidbody _rb;
     private Transform _cameraTransform;
 
+    private bool _isMovementLocked;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
-
-        // [설계 이유] Camera.main 자동 참조
-        // → 시네머신 사용 시 Inspector 연결 불필요
         _cameraTransform = Camera.main.transform;
     }
 
     private void FixedUpdate()
     {
+        if (_isMovementLocked)
+        {
+            StopMovement();
+            return;
+        }
+
         Move();
+    }
+
+    public void LockMovement(float seconds)
+    {
+        StartCoroutine(LockMovementRoutine(seconds));
+    }
+
+    private IEnumerator LockMovementRoutine(float seconds)
+    {
+        _isMovementLocked = true;
+        StopMovement();
+
+        yield return new WaitForSecondsRealtime(seconds);
+
+        _isMovementLocked = false;
+    }
+
+    private void StopMovement()
+    {
+        _rb.linearVelocity = new Vector3(0f, _rb.linearVelocity.y, 0f);
     }
 
     private void Move()
@@ -30,14 +56,10 @@ public class MapPlayerController : MonoBehaviour
 
         if (h == 0 && v == 0)
         {
-            // 입력 없으면 수평 속도만 0 — 중력(Y)은 유지
-            _rb.linearVelocity = new Vector3(0f, _rb.linearVelocity.y, 0f);
+            StopMovement();
             return;
         }
 
-        // [설계 이유] 쿼터뷰 방향 보정
-        // 카메라 Y축 기준으로 이동 방향 변환
-        // → W키가 항상 화면 위쪽으로 이동
         Vector3 camForward = _cameraTransform.forward;
         Vector3 camRight = _cameraTransform.right;
 
@@ -50,10 +72,9 @@ public class MapPlayerController : MonoBehaviour
 
         _rb.linearVelocity = new Vector3(
             moveDir.x * moveSpeed,
-            _rb.linearVelocity.y,  // 중력(Y)은 물리엔진에 맡김
+            _rb.linearVelocity.y,
             moveDir.z * moveSpeed);
 
-        // 이동 방향으로 캐릭터 회전
         transform.rotation = Quaternion.LookRotation(moveDir);
     }
 }

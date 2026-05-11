@@ -5,7 +5,7 @@ using System.Collections;
 using System;
 public class BattleActionService
 {
-    private const int BasicAttackCost = 5;
+    private const int BasicAttackCost = 1;
 
     private readonly MonoBehaviour _coroutineHost;
 
@@ -26,11 +26,12 @@ public class BattleActionService
         _coroutineHost = coroutineHost;
     }
 
-    public void Initialize(BattleRuntime runtime, List<SkillSO> skills)
+    public void Initialize(BattleRuntime runtime, List<PlayerSkillInstance> skills)
     {
         _runtime = runtime;
-        _costHandler = new CostHandler(runtime.Player.statData.startCost, runtime.Player.statData.maxCost);
-        _skillExecutor = new SkillExecutor(skills ?? new List<SkillSO>());
+        _costHandler = new CostHandler(runtime.Player.GetStartCost(), runtime.Player.GetMaxCost()
+        );
+        _skillExecutor = new SkillExecutor(skills ?? new List<PlayerSkillInstance>());
 
         IsInitialized = true;
         IsProcessing = false;
@@ -49,15 +50,22 @@ public class BattleActionService
         if (!IsInitialized || IsProcessing || !CanUseSkill) return;
         if (_runtime.Player.statusHandler.IsSkillDisabled()) return;
 
-        SkillSO skill = _skillExecutor.OnSpaceBar();
+        PlayerSkillInstance skill = _skillExecutor.OnSpaceBar();
+
         if (skill == null) return;
 
-        if (!_costHandler.SpendCost(skill.cost)) return;
+        if (!_costHandler.SpendCost(skill.Cost)) return;
 
-        if (skill.effects == null) return;
+        List<SkillEffectSO> effects = skill.Effects;
+        if (effects == null) return;
 
-        foreach (var effect in skill.effects)
-            effect.Apply(_runtime.Player, _runtime.Enemy);
+        for(int i = 0; i < effects.Count; i++)
+        {
+            if (effects[i] == null)
+                continue;
+
+            effects[i].Apply(_runtime.Player, _runtime.Enemy);
+        }
     }
 
     public void TryPlayerAttack(Direction rawDir, Action onComboAvailable, Action onTurnFinished)
@@ -121,6 +129,14 @@ public class BattleActionService
         {
             DamageContext context = DamageResolver.CreateBasicAttack(_runtime.Player, _runtime.Enemy,
                 playerDir,wasCombo);
+
+            BattleDataManager.instance.PlayerInstance.DispatchItemBattleEvent(
+            new ItemBattleEventContext
+            {
+                eventType = ItemBattleEventType.BeforeDealDamage,
+                owner = _runtime.Player,
+                damageContext = context
+            });
 
             int damage = DamageResolver.Apply(context);
 

@@ -7,6 +7,7 @@ public class RewardCardUI : MonoBehaviour
 {
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI rarityText;
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private Button button;
 
@@ -27,8 +28,10 @@ public class RewardCardUI : MonoBehaviour
         {
             icon.gameObject.SetActive(false);
         }
+
         nameText.text = reward.rewardName;
         descriptionText.text = reward.description;
+        rarityText.text = reward.rarity.ToString();
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => _onClick?.Invoke(_reward));

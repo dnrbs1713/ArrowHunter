@@ -23,7 +23,7 @@ public class BattleSpawner : MonoBehaviour
         BaseStatSO playerSO = BattleDataManager.instance.playerStatSO;
         if (playerSO?.prefab == null) return;
 
-        GameObject obj = Instantiate(playerSO.prefab, transform.position, transform.rotation);
+        GameObject obj = Instantiate(playerSO.battlePrefab, transform.position, transform.rotation);
         obj.name = "Player";
 
         BattleEntity entity = obj.GetComponentInChildren<BattleEntity>();

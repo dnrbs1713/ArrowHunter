@@ -1,0 +1,21 @@
+﻿id,assetName,rewardName,description,rarity,effectIds,inPool,iconPath,notes
+reward_attack_down_3,R_AttackDamage_DOWN_3,공격력 증가 + 3(DOWN),아래쪽 커맨드 공격력이 증가한다.,Common,effect_attack_down_3,TRUE,,기존 SO 기반. assetName은 파일명에 쓰기 쉬운 문자만 권장
+reward_attack_left_3,R_AttackDamage_LEFT_3,공격력 증가 + 3(LEFT),왼쪽 커맨드 공격력이 증가한다.,Common,effect_attack_left_3,TRUE,,
+reward_attack_right_3,R_AttackDamage_RIGHT_3,공격력 증가 + 3(RIGHT),오른쪽 커맨드 공격력이 증가한다.,Common,effect_attack_right_3,TRUE,,
+reward_attack_up_3,R_AttackDamage_UP_3,공격력 증가 + 3(UP),위쪽 커맨드 공격력이 증가한다.,Common,effect_attack_up_3,TRUE,,기존 SO 기반
+reward_defense_power_5,R_DefensePower_5,방어력 증가 + 5,방어력이 증가한다.,Common,effect_defense_power_5,TRUE,,
+reward_hp_5,R_HP_5,HP 증가 +5,최대 HP가 증가한다.,Common,effect_hp_5,TRUE,,기존 SO modifier value가 5라서 +5로 정리. +10이 의도라면 RewardEffects value를 10으로 변경
+reward_start_cost_3,R_StartCost_1,코스트 증가 + 1,코스트가 증가한다.,Common,effect_start_cost_1,TRUE,,
+reward_attack_all_2,R_AttackDamage_ALL_2,공격력 증가 + 2(ALL),모든 방향 커맨드 공격력이 증가한다.,Uncommon,effect_attack_all_2,TRUE,,
+reward_attack_down_5,R_AttackDamage_DOWN_5,공격력 증가 + 5(DOWN),아래쪽 커맨드 공격력이 증가한다.,Uncommon,effect_attack_down_5,TRUE,,
+reward_attack_left_5,R_AttackDamage_LEFT_5,공격력 증가 + 5(LEFT),왼쪽 커맨드 공격력이 증가한다.,Uncommon,effect_attack_left_5,TRUE,,
+reward_attack_right_5,R_AttackDamage_RIGHT_5,공격력 증가 + 5(RIGHT),오른쪽 커맨드 공격력이 증가한다.,Uncommon,effect_attack_right_5,TRUE,,
+reward_attack_up_5,R_AttackDamage_UP_5,공격력 증가 + 5(UP),위쪽 커맨드 공격력이 증가한다.,Uncommon,effect_attack_up_5,TRUE,,
+reward_combo_damage_5_per,R_Combo_5_per,콤보 데미지 증가 + 5%,콤보 데미지가 증가한다.,Uncommon,effect_combo_damage_5_per,TRUE,,
+reward_cost_recovery,R_CostRecovery_1,코스트 회복 증가 + 1,코스트 회복량이 증가한다.,Uncommon,effect_cost_recovery_1,TRUE,,
+reward_defense_power_8,R_DefensePower_8,방어력 증가 + 8,방어력이 증가한다.,Uncommon,effect_defense_power_8,TRUE,,
+reward_hp_10,R_HP_10,HP 증가 +5,최대 HP가 증가한다.,Uncommon,effect_hp_10,TRUE,,
+reward_attack_down_15_per,R_AttackDamage_Down_15_per,공격력 증가 + 15%(DOWN),아래쪽 커맨드 공격력이 증가한다.,Rare,effect_attack_down_15_per,TRUE,,
+reward_attack_left_15_per,R_AttackDamage_Left_15_per,공격력 증가 + 15%(LEFT),왼쪽 커맨드 공격력이 증가한다.,Rare,effect_attack_left_15_per,TRUE,,
+reward_attack_up_15_per,R_AttackDamage_Up_15_per,공격력 증가 + 15%(UP),위쪽 커맨드 공격력이 증가한다.,Rare,effect_attack_up_15_per,TRUE,,
+reward_attack_right_15_per,R_AttackDamage_Right_15_per,공격력 증가 + 15%(Right),오른쪽 커맨드 공격력이 증가한다.,Rare,effect_attack_right_15_per,TRUE,,
