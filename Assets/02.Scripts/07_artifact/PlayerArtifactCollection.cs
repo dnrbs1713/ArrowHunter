@@ -12,30 +12,59 @@ public class PlayerArtifactCollection
         obtainedArtifact = new List<PlayerArtifactInstance>();
     }
 
-    public void ObtainArtifact(ArtifactSO artifact)
+    public bool ObtainArtifact(PlayerArtifactInstance artifactInstance)
     {
-        if (artifact == null)
-            return;
+        if (artifactInstance == null || artifactInstance.artifactSO == null)
+            return false;
 
-        PlayerArtifactInstance artifactInstance = new PlayerArtifactInstance(artifact);
-        obtainedArtifact.Add(artifactInstance);
+        if (!HasArtifact(artifactInstance))
+            obtainedArtifact.Add(artifactInstance);
+
+
 
         Debug.Log($"¾ÆÆ¼ÆÑÆ® È¹µæ{artifactInstance.artifactSO.artifactName}");
+
+        return true;
     }
 
-    public void DeleteItem(PlayerArtifactInstance artifactInstance)
+    public bool DeleteArtifact(PlayerArtifactInstance artifactInstance)
     {
-        if (artifactInstance == null)
-            return;
-        
-        if (!HasArtifact(artifactInstance))
-            return;
+        if (artifactInstance == null || artifactInstance.artifactSO == null)
+            return false;
 
-        obtainedArtifact.Remove(artifactInstance);
+        if (HasArtifact(artifactInstance))
+            obtainedArtifact.Remove(artifactInstance);
+        return true;
     }
 
     public bool HasArtifact(PlayerArtifactInstance artifactInstance)
     {
-        return artifactInstance != null && obtainedArtifact.Contains(artifactInstance);
+        foreach (var artifact in obtainedArtifact)
+        {
+            if (artifact == artifactInstance)
+                return true;
+        }
+        return false;
+    }
+
+    public void DispatchBattleEvent(ArtifactBattleEventContext context)
+    {
+        foreach (var artifact in obtainedArtifact)
+        {
+            if (artifact == null || artifact.artifactSO == null)
+                continue;
+
+            //À¯¹° È¿°ú ¹ßµ¿
+            for (int i = 0; i < artifact.artifactSO.artifactEffect.Count; i++)
+            {
+                ArtifactEffectSO effect = artifact.artifactSO.artifactEffect[i];
+
+                if (effect == null)
+                    continue;
+
+                context.artifactInstance = artifact;
+                effect.HandleBattleEvent(context);
+            }
+        }
     }
 }

@@ -4,14 +4,14 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class ArtifatctUI 
+public class ArtifactUI  : MonoBehaviour
 {
     [Header("Window")]
     [SerializeField] private GameObject rootPanel;
 
     [Header("List")]
     [SerializeField] private Transform contentRoot;
-    [SerializeField] private InventoryItemSlotUI itemSlotPrefab;
+    [SerializeField] private ArtifactSlotUI ArifactSlotPrefab;
 
     [Header("Buttons")]
     [SerializeField] private Button deleteButton;

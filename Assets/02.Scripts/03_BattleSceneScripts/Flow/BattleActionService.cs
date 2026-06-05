@@ -113,6 +113,8 @@ public class BattleActionService
 
         Debug.Log($"<color=yellow>[Player Attack]</color> Direction: {playerDir}");
 
+
+
         if (wasCombo)
         {
             result = new BattleResult(true);
@@ -130,13 +132,25 @@ public class BattleActionService
             DamageContext context = DamageResolver.CreateBasicAttack(_runtime.Player, _runtime.Enemy,
                 playerDir,wasCombo);
 
-            BattleDataManager.instance.PlayerInstance.DispatchItemBattleEvent(
-            new ItemBattleEventContext
-            {
-                eventType = ItemBattleEventType.BeforeDealDamage,
-                owner = _runtime.Player,
-                damageContext = context
-            });
+            
+            //BattleDataManager.instance.PlayerInstance.DispatchItemBattleEvent(
+            //    new ItemBattleEventContext
+            //        {
+            //            eventType = ItemBattleEventType.BeforeDealDamage,
+            //            owner = _runtime.Player,
+            //            damageContext = context
+            //        }
+            //    );
+
+            BattleDataManager.instance.PlayerInstance.DispatchArtifactBattleEvent(
+                new ArtifactBattleEventContext
+                    {
+                        eventType = ArtifactEventType.BeforeDealDamage,
+                        owner = _runtime.Player,
+                        damageContext = context
+                    }
+                );
+
 
             int damage = DamageResolver.Apply(context);
 

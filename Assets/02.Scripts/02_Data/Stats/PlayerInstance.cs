@@ -26,7 +26,6 @@ public class PlayerInstance
     [SerializeField]
     public PlayerInventory playerInventory { get; private set; }
     public EquipmentSlot equipmentSlot { get; private set; }
-
     public PlayerArtifactCollection playerArtifactCollection { get; private set; }
 
     public PlayerInstance(BaseStatSO so)
@@ -368,7 +367,7 @@ public class PlayerInstance
     // BattleScene
     public void DispatchArtifactBattleEvent(ArtifactBattleEventContext context)
     {
-
+        playerArtifactCollection.DispatchBattleEvent(context);
     }
 
     // MapScene
